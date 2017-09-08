@@ -3,6 +3,23 @@
 
 #include "date.h"
 
+Date Date::_default{1, Month::January, 1990};
+
+Date::Date(){
+	_day = _default._day;
+	_month = _default._month;
+	_year = _default._year;
+}
+
+Date::Date(int day, Month month, int year):
+	_day{day},
+	_month{month},
+	_year{year}
+
+{
+	if( day > daysInMonth() || year < 0) throw InvalidDate();
+}
+
 int Date::day() const
 {
 	return _day;
@@ -26,6 +43,40 @@ bool Date::isLeapYear() const
         return true;
     else
         return false;
+}
+bool Date::operator==(const Date& rhs)const{
+	auto equalCounter = 0;
+	if (_day == rhs.day())
+		equalCounter++;
+	if (_month ==rhs.month())
+		equalCounter++;
+	if(_year == rhs.year())
+		equalCounter++;
+
+	if (equalCounter != 3)
+		return false;
+
+	return true;
+}
+
+void Date::nextDay(){
+	_day++;
+	if (_day > daysInMonth()){
+		_day = 1;
+		auto currentMonth = static_cast<int>(_month);
+		currentMonth++;
+		if(currentMonth == 13) {
+			currentMonth = 1;
+			_year++;
+		}
+		_month = static_cast<Month>(currentMonth);
+	}
+}
+
+void Date::setDefaultDate(int day, Month month, int year){
+	_default._day = day;
+	_default._month = month;
+	_default._year = year;
 }
 
 int Date::daysInMonth() const

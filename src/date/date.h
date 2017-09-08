@@ -22,10 +22,14 @@ enum class Month
 	November, 
 	December
 };
-	
+
+class InvalidDate{};
+
 class Date
 {
-public:	
+public:
+	Date();
+	Date(int day, Month month, int year);
 	// return the day of the month
 	int	day () const;
 	// return the month of the year
@@ -33,7 +37,12 @@ public:
 	// return the year
 	int year () const;
 	// return true if it is a leap-year, false if not
-	bool isLeapYear () const;	
+	bool isLeapYear () const;
+	bool operator==( const Date& rhs)const;
+	// adds a day to current Date
+	void nextDay();
+	//sets a default date for all instances of the class
+	static void setDefaultDate(int day, Month month, int year);
 
 private:
 	// return the number of days in the _month
@@ -42,6 +51,7 @@ private:
 	int	_day;
 	Month _month;
 	int	_year;
+	static Date _default;
 
 };
 
