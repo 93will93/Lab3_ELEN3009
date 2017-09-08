@@ -73,7 +73,28 @@ TEST_CASE("Different years give differnt dates"){
 // Exercise 2.4
 // Provide tests for a new member function of the Date class
 // which will increase the date by one day.
+TEST_CASE("Incrementing a date gives the next day"){
+    int day = 1;
+    Date test_date(day, Month::March, 2000);
+    test_date.nextDay();
 
+    CHECK(test_date.day() == day+1);
+}
+TEST_CASE("Incrementing last day of the month"){
+    Date test_date1(30, Month::September, 2000);
+    Date test_date2(1, Month::October, 2000);
+    test_date1.nextDay();
+
+    CHECK(test_date1 == test_date2);
+}
+TEST_CASE("Incrementing last day of the year"){
+    int year = 2000;
+    Date test_date1(31, Month::December, year);
+    Date test_date2(1, Month::January, year+1);
+    test_date1.nextDay();
+
+    CHECK(test_date1 == test_date2);
+}
 
 // Exercise 2.5
 // Write tests for the new default constructor and the

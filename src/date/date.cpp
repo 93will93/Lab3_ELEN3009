@@ -51,6 +51,20 @@ bool Date::operator==(const Date& rhs)const{
 	return true;
 }
 
+void Date::nextDay(){
+	_day++;
+	if (_day > daysInMonth()){
+		_day = 1;
+		auto currentMonth = static_cast<int>(_month);
+		currentMonth++;
+		if(currentMonth == 13) {
+			currentMonth = 1;
+			_year++;
+		}
+		_month = static_cast<Month>(currentMonth);
+	}
+}
+
 int Date::daysInMonth() const
 {
 	switch (_month) {
