@@ -43,17 +43,32 @@ TEST_CASE("Exception thrown for invalid year in Date initialization"){
 
 
 // Exercise 2.3
-//TEST_CASE("Identical Dates are Equal") {
-//    Date date_1(1, Month::January, 2000);
-//    Date date_2(1, Month::January, 2000);
-//
-//    CHECK(date_1 == date_2);
-//}
+TEST_CASE("Identical Dates are Equal") {
+    Date date_1(1, Month::January, 2000);
+    Date date_2(1, Month::January, 2000);
+
+    CHECK(date_1 == date_2);
+}
 
 // Supply at least three additional tests for
 // the equality operator here, to ensure that
 // it is working correctly.
+TEST_CASE("Differnt days give different dates"){
+    Date date_1(2, Month::February, 2000);
+    Date date_2(1, Month::February, 2000);
 
+    CHECK_FALSE( date_1 == date_2);
+}
+TEST_CASE("Different months give differnt dates"){
+    Date date_1(2, Month::February, 2000);
+    Date date_2(2, Month::March, 2000);
+    CHECK_FALSE(date_1 == date_2);
+}
+TEST_CASE("Different years give differnt dates"){
+    Date date_1(2, Month::February, 2000);
+    Date date_2(2, Month::February, 2001);
+    CHECK_FALSE(date_1 == date_2);
+}
 
 // Exercise 2.4
 // Provide tests for a new member function of the Date class

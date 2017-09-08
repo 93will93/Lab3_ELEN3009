@@ -36,6 +36,20 @@ bool Date::isLeapYear() const
     else
         return false;
 }
+bool Date::operator==(const Date& rhs)const{
+	auto equalCounter = 0;
+	if (_day == rhs.day())
+		equalCounter++;
+	if (_month ==rhs.month())
+		equalCounter++;
+	if(_year == rhs.year())
+		equalCounter++;
+
+	if (equalCounter != 3)
+		return false;
+
+	return true;
+}
 
 int Date::daysInMonth() const
 {
