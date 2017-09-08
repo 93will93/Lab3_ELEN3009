@@ -3,6 +3,14 @@
 
 #include "date.h"
 
+Date Date::_default{1, Month::January, 1990};
+
+Date::Date(){
+	_day = _default._day;
+	_month = _default._month;
+	_year = _default._year;
+}
+
 Date::Date(int day, Month month, int year):
 	_day{day},
 	_month{month},
@@ -63,6 +71,12 @@ void Date::nextDay(){
 		}
 		_month = static_cast<Month>(currentMonth);
 	}
+}
+
+void Date::setDefaultDate(int day, Month month, int year){
+	_default._day = day;
+	_default._month = month;
+	_default._year = year;
 }
 
 int Date::daysInMonth() const

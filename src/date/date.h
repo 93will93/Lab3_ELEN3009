@@ -28,6 +28,7 @@ class InvalidDate{};
 class Date
 {
 public:
+	Date();
 	Date(int day, Month month, int year);
 	// return the day of the month
 	int	day () const;
@@ -40,6 +41,8 @@ public:
 	bool operator==( const Date& rhs)const;
 	// adds a day to current Date
 	void nextDay();
+	//sets a default date for all instances of the class
+	static void setDefaultDate(int day, Month month, int year);
 
 private:
 	// return the number of days in the _month
@@ -48,6 +51,7 @@ private:
 	int	_day;
 	Month _month;
 	int	_year;
+	static Date _default;
 
 };
 

@@ -99,3 +99,10 @@ TEST_CASE("Incrementing last day of the year"){
 // Exercise 2.5
 // Write tests for the new default constructor and the
 // setDefaultDate method.
+TEST_CASE("Changing the default date"){
+    Date test_Date1;
+    test_Date1.setDefaultDate(1, Month::January, 2000);
+    Date test_Date2;
+    CHECK_FALSE(test_Date1 == test_Date2);
+
+}
