@@ -8,23 +8,23 @@
 // Comment out this test after inspecting the output.
 // Tests which require manual verification should not be lumped
 // with tests which are automatically verified!
-TEST_CASE("Date has uninitialised state") {	 
-    // make some prior memory allocations - which will be the case in a typical program
-    auto i = {1.0,1.3,1.4,1.5,1.6,1.7,1.8,1.9,10.2,11.0,1.2,1.3,1.23};
-    auto i2 = 1.0;
-    
-    Date today;	
-    std::cout << "Today is: " << endl;
-    printDate(today);
-}
+//TEST_CASE("Date has uninitialised state") {
+//    // make some prior memory allocations - which will be the case in a typical program
+//    auto i = {1.0,1.3,1.4,1.5,1.6,1.7,1.8,1.9,10.2,11.0,1.2,1.3,1.23};
+//    auto i2 = 1.0;
+//
+//    Date today;
+//    std::cout << "Today is: " << endl;
+//    printDate(today);
+//}
 
 // Write code to make this test pass
-//TEST_CASE("Valid Date is initialised correctly") {
-//	Date heritage_day{24, Month::September, 2000};
-//	CHECK(heritage_day.day() == 24);
-//	CHECK(heritage_day.month() == Month::September);
-//	CHECK(heritage_day.year() == 2000);
-//}
+TEST_CASE("Valid Date is initialised correctly") {
+	Date heritage_day{24, Month::September, 2000};
+	CHECK(heritage_day.day() == 24);
+	CHECK(heritage_day.month() == Month::September);
+	CHECK(heritage_day.year() == 2000);
+}
 
 
 // Exercise 2.2
