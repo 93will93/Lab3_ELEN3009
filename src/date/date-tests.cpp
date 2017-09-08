@@ -32,6 +32,14 @@ TEST_CASE("Valid Date is initialised correctly") {
 // verify that an exception is thrown when an attempt is made
 // to construct an invalid date. Think carefully about which
 // invalid dates to test.
+TEST_CASE("Exception thrown for invalid day in Date initialization"){
+    //This test verifies bigger than a month as well as not a leap year.
+   CHECK_THROWS_AS(Date date(29, Month::February, 2001), InvalidDate);
+}
+TEST_CASE("Exception thrown for invalid year in Date initialization"){
+    //This test verifies bigger than a month as well as not a leap year.
+    CHECK_THROWS_AS(Date date(24, Month::February, -2001), InvalidDate);
+}
 
 
 // Exercise 2.3

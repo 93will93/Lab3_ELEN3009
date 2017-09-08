@@ -22,7 +22,9 @@ enum class Month
 	November, 
 	December
 };
-	
+
+class InvalidDate{};
+
 class Date
 {
 public:
